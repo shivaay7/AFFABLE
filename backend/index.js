@@ -12,11 +12,13 @@ app.use((req,res,next)=>{
   next();
 })
 mongoDB();
+app.use(express.json());
+app.use(cors());
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.setHeader("Access-Control-Allow-Credentials","true);
+  res.send('Hello World!');
 })
 
-app.use(express.json());
 //iske bina neeche wali line nahi chalegi
 app.use('/api',require("./routes/CreateUser"))
 
